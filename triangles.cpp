@@ -1,24 +1,66 @@
 // clang-format off
 #include <GL/glew.h>
 #include <GL/freeglut.h>
-// clang-format on
+#include <iostream>
+#include "vgl.h"
+#include "LoadShaders.h"
 
-namespace kan {
-void display() {
-  static const float black[] = {0.0f, 0.0f, 0.0f, 0.0f};
-  glClearBufferfv(GL_COLOR, 0, black);
+enum VAO_IDs { Triangles, NumVAOs };
+enum Buffer_IDs { ArrayBuffer, NumBuffers };
+enum Attrib_IDs { vPosition = 0 };
+
+GLuint VAOs[NumVAOs];
+GLuint Buffers[NumBuffers];
+
+const GLuint NumVertices = 6;
+
+void init() {
+  glGenVertexArrays(NumVAOs, VAOs);
+  glBindVertexArray(VAOs[Triangles]);
+  GLfloat vertices[NumVertices][2] = {
+    {-0.90, -0.90},  // Triangle 1
+    { 0.85, -0.90},
+    {-0.90,  0.85},
+    { 0.90, -0.85},  // Triangle 2
+    { 0.90,  0.90},
+    {-0.85,  0.90}
+  };
+  glGenBuffers(NumBuffers, Buffers);
+  glBindBuffer(GL_ARRAY_BUFFER, Buffers[ArrayBuffer]);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+  ShaderInfo shaders[] = {
+    { GL_VERTEX_SHADER, "triangles.vert" },
+    { GL_FRAGMENT_SHADER, "triangles.frag" },
+    {GL_NONE, NULL}
+  };
+  GLuint program = LoadShaders(shaders);
+  glUseProgram(program);
+  glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+  glEnableVertexAttribArray(vPosition);
 }
-} // namespace kan
+
+void display() {
+  glClear(GL_COLOR_BUFFER_BIT);
+  glBindVertexArray(VAOs[Triangles]);
+  glDrawArrays(GL_TRIANGLES, 0, NumVertices);
+  glFlush();
+}
 
 int main(int argc, char *argv[]) {
-  glewInit();
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-  glutInitWindowPosition(150, 250);
-  glutInitWindowSize(800, 800);
-  [[maybe_unused]] auto nWindow{glutCreateWindow("Kan")};
-  glutSetIconTitle("Kan Icon Title");
-  glutDisplayFunc(kan::display);
+  glutInitDisplayMode(GLUT_RGBA);
+  glutInitWindowSize(512, 512);
+  glutInitContextVersion(4, 3);
+  glutInitContextProfile(GLUT_CORE_PROFILE);
+  glutCreateWindow(argv[0]);
+  // glutInitWindowPosition(150, 250);
+  // glutSetIconTitle("Kan Icon Title");
+  if (glewInit() != GLEW_OK) {
+    std::cerr << "Failed to initialize GLEW.\n";
+    return 1;
+  }
+  init();
+  glutDisplayFunc(display);
   glutMainLoop();
   return 0;
 }
