@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Kan",
+      "icon": { "color": "terminal.ansiBlue", "id": "play" },
+      "detail": "Run the Kan application.",
+      "type": "process",
+      "command": "kan",
+      "options": { "cwd": "${config:cmake.buildDirectory}" },
+      "problemMatcher": []
+    }
+  ]
+}
