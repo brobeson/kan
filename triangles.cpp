@@ -2,8 +2,10 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <iostream>
-#include "vgl.h"
 #include "LoadShaders.h"
+#include "igloo/shaders.h"
+
+#define BUFFER_OFFSET(a) ((void *)(a))
 
 enum VAO_IDs { Triangles, NumVAOs };
 enum Buffer_IDs { ArrayBuffer, NumBuffers };
@@ -35,6 +37,10 @@ void init() {
   };
   GLuint program = LoadShaders(shaders);
   glUseProgram(program);
+  const auto p{gl::load_program_from_files(
+    std::vector<gl::shader_file>{{"triangles.vert", gl::shader_type::vertex},
+    {"triangles.frag", gl::shader_type::fragment}}
+  )};
   glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
   glEnableVertexAttribArray(vPosition);
 }
