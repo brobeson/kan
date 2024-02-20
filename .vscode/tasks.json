@@ -7,7 +7,7 @@
       "detail": "Run the Kan application.",
       "type": "process",
       "command": "demo",
-      "options": { "cwd": "${config:cmake.buildDirectory}" },
+      "options": { "cwd": "${config:cmake.buildDirectory}/demo/" },
       "problemMatcher": []
     }
   ]

@@ -27,7 +27,7 @@ ReadShader( const char* filename )
 #endif // WIN32
 
     if ( !infile ) {
-#ifdef _DEBUG
+#ifndef _NDEBUG
         std::cerr << "Unable to open file '" << filename << "'" << std::endl;
 #endif /* DEBUG */
         return NULL;
@@ -80,7 +80,7 @@ LoadShaders(ShaderInfo* shaders)
         GLint compiled;
         glGetShaderiv( shader, GL_COMPILE_STATUS, &compiled );
         if ( !compiled ) {
-#ifdef _DEBUG
+#ifndef _NDEBUG
             GLsizei len;
             glGetShaderiv( shader, GL_INFO_LOG_LENGTH, &len );
 
@@ -103,7 +103,7 @@ LoadShaders(ShaderInfo* shaders)
     GLint linked;
     glGetProgramiv( program, GL_LINK_STATUS, &linked );
     if ( !linked ) {
-#ifdef _DEBUG
+#ifndef _NDEBUG
         GLsizei len;
         glGetProgramiv( program, GL_INFO_LOG_LENGTH, &len );
 
