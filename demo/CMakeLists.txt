@@ -1,0 +1,5 @@
+add_executable(demo)
+target_sources(demo PRIVATE triangles.cpp LoadShaders.cpp LoadShaders.h)
+target_link_libraries(demo PRIVATE GLUT::GLUT GLEW::GLEW OpenGL::GL)
+configure_file(triangles.vert "${CMAKE_CURRENT_BINARY_DIR}" COPYONLY)
+configure_file(triangles.frag "${CMAKE_CURRENT_BINARY_DIR}" COPYONLY)

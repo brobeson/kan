@@ -6,8 +6,8 @@
       "icon": { "color": "terminal.ansiBlue", "id": "play" },
       "detail": "Run the Kan application.",
       "type": "process",
-      "command": "kan",
-      "options": { "cwd": "${config:cmake.buildDirectory}" },
+      "command": "demo",
+      "options": { "cwd": "${config:cmake.buildDirectory}/demo/" },
       "problemMatcher": []
     }
   ]

@@ -1,4 +1,3 @@
-// clang-format off
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <iostream>
@@ -53,8 +52,6 @@ int main(int argc, char *argv[]) {
   glutInitContextVersion(4, 3);
   glutInitContextProfile(GLUT_CORE_PROFILE);
   glutCreateWindow(argv[0]);
-  // glutInitWindowPosition(150, 250);
-  // glutSetIconTitle("Kan Icon Title");
   if (glewInit() != GLEW_OK) {
     std::cerr << "Failed to initialize GLEW.\n";
     return 1;
