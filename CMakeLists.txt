@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.21)
+project(kan LANGUAGES CXX)
+find_package(GLUT REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(OpenGL REQUIRED)
+add_subdirectory(demo)
