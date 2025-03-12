@@ -1,0 +1,14 @@
+{
+  "C_Cpp.autoAddFileAssociations": false,
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "cmake.ctest.allowParallelJobs": true,
+  "cSpell.checkOnlyEnabledFileTypes": false,
+  "editor.defaultFormatter": "ms-vscode.cpptools",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    ".clang-*": "yaml"
+  },
+  "[json,markdown,yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

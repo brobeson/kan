@@ -1,0 +1,10 @@
+name: Build
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+jobs:
+  dotFiles:
+    name: Project Files
+    uses: brobeson/SupportFileQuality/.github/workflows/support_files.yaml@v1
