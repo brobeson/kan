@@ -1,0 +1,1 @@
+message(STATUS "Kan does not have tests")

@@ -1,4 +1,14 @@
 {
   "version": "0.2",
-  "words": ["brobeson", "cpptools", "ctest", "esbenp", "freeglut", "libglew"]
+  "dictionaries": ["cpp"],
+  "words": [
+    "brobeson",
+    "cpptools",
+    "ctest",
+    "esbenp",
+    "freeglut",
+    "glew",
+    "libglew",
+    "libglu"
+  ]
 }
