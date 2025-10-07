@@ -1,0 +1,16 @@
+scene:
+  camera:
+    position: [0, 0, 0]
+    look-at: [0, 0, 1]
+    up: [0, 1, 0]
+  gravity-well:
+    position: [0, 0, 10]
+    force: 10
+  gravity:
+    direction: [10, 0, 0]
+    force: 20
+  particle-system:
+    emitter:
+      position: [0, 0, 1]
+      emission-direction: [0, 1, 0]
+      emission-code: [30, 20]
